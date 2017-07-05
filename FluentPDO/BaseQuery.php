@@ -251,6 +251,8 @@ abstract class BaseQuery implements IteratorAggregate
     protected function buildQuery() {
         $query = '';
         foreach ($this->clauses as $clause => $separator) {
+            if ($clause == 'SELECT' && !$this->clauseNotEmpty($clause))
+                $this->statements[$clause][] = '*';
             if ($this->clauseNotEmpty($clause)) {
                 if (is_string($separator)) {
                     $query .= " $clause " . implode($separator, $this->statements[$clause]);
