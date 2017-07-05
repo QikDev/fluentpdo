@@ -6,8 +6,8 @@
 	"license": ["Apache-2.0", "GPL-2.0+"],
 	"authors": [
 		{
-			"name": "Marek Lichtner",
-			"homepage": "http://licht.sk/"
+			"name": "Mike Sevens",
+			"homepage": "https://mistevs.io/"
 		}
 	],
 	"autoload": {

@@ -48,7 +48,11 @@ class InsertQuery extends BaseQuery
         if ($result)
             return $this->getPDO()->lastInsertId($sequence);
         else
-            throw new \Exception($this->getPDO()->errorCode().':: '.$this->GetPDO()->errorInfo());
+        {
+            $errorCode = '';
+            $errorInfo = '';
+            throw new \Exception($this->getPDO()->errorCode()[0].':: '.$this->GetPDO()->errorInfo()[0]);
+        }
 
         return false;
     }
