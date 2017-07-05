@@ -138,13 +138,14 @@ abstract class BaseQuery implements IteratorAggregate
         $time = microtime(true);
         if ($result && $result->execute($parameters)) {
             $this->time = microtime(true) - $time;
+            $this->result = $result;
         } else {
-            $result = false;
+            $errorInfo = $result->errorInfo();
+            $this->result = $result;
+            throw new \Exception('FluentPDO Insertion Error: '.$errorInfo[0].' '.$errorInfo[1].': '.$errorInfo[2]);
         }
 
-        $this->result = $result;
         $this->debugger();
-
         return $result;
     }
 
@@ -172,7 +173,7 @@ abstract class BaseQuery implements IteratorAggregate
                 $time = sprintf('%0.3f', $this->time * 1000) . ' ms';
                 $rows = ($this->result) ? $this->result->rowCount() : 0;
                 $finalString = "# $backtrace[file]:$backtrace[line] ($time; rows = $rows)\n$debug\n\n";
-                if (is_resource(STDERR)) { // if STDERR is set, send there, otherwise just output the string
+                if (isset(STDERR) && is_defined(STDERR) && is_resource(STDERR)) { // if STDERR is set, send there, otherwise just output the string
                     fwrite(STDERR, $finalString);
                 }
                 else {
