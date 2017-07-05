@@ -49,9 +49,8 @@ class InsertQuery extends BaseQuery
             return $this->getPDO()->lastInsertId($sequence);
         else
         {
-            $errorCode = '';
-            $errorInfo = '';
-            throw new \Exception($this->getPDO()->errorCode()[0].':: '.$this->GetPDO()->errorInfo()[0]);
+            $errorInfo = $this->GetPDO()->errorInfo();
+            throw new \Exception('FluentPDO Insertion Error: '.$errorInfo[0].' '.$errorInfo[1].': '.$errorInfo[2]);
         }
 
         return false;
