@@ -266,12 +266,6 @@ abstract class BaseQuery implements IteratorAggregate
             }
         }
 
-        echo '<pre>';
-        print_r($this->clauses);
-        echo '</pre>';
-        echo $query;
-        exit;
-
         return trim($query);
     }
 
