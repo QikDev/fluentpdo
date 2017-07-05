@@ -142,7 +142,7 @@ abstract class BaseQuery implements IteratorAggregate
         } else {
             $errorInfo = $result->errorInfo();
             $this->result = $result;
-            throw new \Exception('FluentPDO Insertion Error: '.$errorInfo[0].' '.$errorInfo[1].': '.$errorInfo[2]);
+            throw new \Exception('FluentPDO Query Error: '.$errorInfo[0].' '.$errorInfo[1].': '.$errorInfo[2]);
         }
 
         $this->debugger();

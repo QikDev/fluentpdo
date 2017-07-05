@@ -52,7 +52,7 @@ class SelectQuery extends CommonQuery implements Countable
         $this->fromAlias = end($fromParts);
 
         $this->statements['FROM']     = $from;
-        $this->statements['SELECT'][] = $this->fromAlias . '.*';
+        //$this->statements['SELECT'][] = $this->fromAlias . '.*';
         $this->joins[]                = $this->fromAlias;
 
         if(isset($fpdo->convertTypes) && $fpdo->convertTypes){
