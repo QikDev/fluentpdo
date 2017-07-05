@@ -259,10 +259,16 @@ abstract class BaseQuery implements IteratorAggregate
                 } elseif (is_callable($separator)) {
                     $query .= call_user_func($separator);
                 } else {
-                    throw new Exception("Clause '$clause' is incorrectly set to '$separator'.");
+                    throw new \Exception("Clause '$clause' is incorrectly set to '$separator'.");
                 }
             }
         }
+
+        echo '<pre>';
+        print_r($this->clauses);
+        echo '</pre>';
+        echo $query;
+        exit;
 
         return trim($query);
     }
