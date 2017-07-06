@@ -135,8 +135,6 @@ abstract class BaseQuery implements IteratorAggregate
             $result->setFetchMode(PDO::FETCH_ASSOC);
         }
 
-        var_dump($parameters);
-        exit;
         $time = microtime(true);
         if ($result && $result->execute($parameters)) {
             $this->time = microtime(true) - $time;
