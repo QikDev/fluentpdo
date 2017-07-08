@@ -62,7 +62,7 @@ class FluentUtils
                 case 'INT24':
                         if (is_object($rows) && isset($rows->{$columnMeta['name']}))
                             $rows->{$columnMeta['name']} = $rows->{$columnMeta['name']} + 0;
-                        elseif (isset($rows[$columnMeta['name']]))
+                        elseif (is_array($rows) && isset($rows[$columnMeta['name']]))
                             $rows[$columnMeta['name']] = $rows[$columnMeta['name']] + 0;
                         else 
                         {
