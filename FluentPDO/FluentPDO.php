@@ -98,7 +98,7 @@ class FluentPDO
     public function update($table, $set = array(), $primaryKey = null) {
         $query = new UpdateQuery($this, $table);
         $query->set($set);
-        if ($primaryKey) {
+        if ($primaryKey !== null) {
             $primaryKeyName = $this->getStructure()->getPrimaryKey($table);
             $query          = $query->where($primaryKeyName, $primaryKey);
         }
@@ -116,7 +116,7 @@ class FluentPDO
      */
     public function delete($table, $primaryKey = null) {
         $query = new DeleteQuery($this, $table);
-        if ($primaryKey) {
+        if ($primaryKey !== null) {
             $primaryKeyName = $this->getStructure()->getPrimaryKey($table);
             $query          = $query->where($primaryKeyName, $primaryKey);
         }
