@@ -60,14 +60,20 @@ class FluentUtils
                 case 'LONG':
                 case 'LONGLONG':
                 case 'INT24':
-                        if(isset($rows[$columnMeta['name']])){
+                        if (is_object($rows) && isset($rows->{$columnMeta['name']}))
+                            $rows->{$columnMeta['name']} = $rows->{$columnMeta['name']} + 0;
+                        elseif (isset($rows[$columnMeta['name']]))
                             $rows[$columnMeta['name']] = $rows[$columnMeta['name']] + 0;
-                        }else{
-                            if(is_array($rows) || $rows instanceof Traversable){
-                                foreach($rows as &$row){
-                                    if(isset($row[$columnMeta['name']])){
+                        else 
+                        {
+                            if (is_array($rows) || $rows instanceof Traversable) 
+                            {
+                                foreach($rows as &$row) 
+                                {
+                                    if (is_object($row) && isset($row->{$columnMeta['name']}))
+                                        $row->{$columnMeta['name']} = $row->{$columnMeta['name']} + 0;
+                                    elseif (isset($row[$columnMeta['name']]))
                                         $row[$columnMeta['name']] = $row[$columnMeta['name']] + 0;
-                                    }
                                 }
                             }                           
                         }
