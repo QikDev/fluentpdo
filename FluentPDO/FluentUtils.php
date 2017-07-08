@@ -61,6 +61,7 @@ class FluentUtils
                 case 'LONGLONG':
                 case 'INT24':
                         var_dump($rows);
+                        var_dump($columnMeta['name']);
                         exit;
 
                         if (is_object($rows) && isset($rows->{$columnMeta['name']}))
