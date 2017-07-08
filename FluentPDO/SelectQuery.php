@@ -105,7 +105,8 @@ class SelectQuery extends CommonQuery implements Countable
         }
         $row = $s->fetch();
 
-        if($this->convertTypes){
+        if ($this->convertTypes) {
+            
             $row = FluentUtils::convertToNativeTypes($s, $row);
         }
 
