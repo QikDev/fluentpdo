@@ -68,7 +68,7 @@ class FluentUtils
                         {
                             if (is_array($rows) || $rows instanceof Traversable) 
                             {
-                                foreach($rows as &$row) 
+                                foreach($rows as $row) 
                                 {
                                     if (is_object($row) && isset($row->{$columnMeta['name']}))
                                         $row->{$columnMeta['name']} = $row->{$columnMeta['name']} + 0;
