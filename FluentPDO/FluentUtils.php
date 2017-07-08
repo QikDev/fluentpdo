@@ -60,6 +60,9 @@ class FluentUtils
                 case 'LONG':
                 case 'LONGLONG':
                 case 'INT24':
+                        var_dump($rows);
+                        exit;
+
                         if (is_object($rows) && isset($rows->{$columnMeta['name']}))
                             $rows->{$columnMeta['name']} = $rows->{$columnMeta['name']} + 0;
                         elseif (is_array($rows) && isset($rows[$columnMeta['name']]))
