@@ -48,8 +48,6 @@ class FluentUtils
      */
     public static function convertToNativeTypes(PDOStatement $statement, $rows)
     {
-        var_dump($rows);
-        exit;
         for ($i = 0; $columnMeta = $statement->getColumnMeta($i); $i++)
         {
             $type = $columnMeta['native_type'];
