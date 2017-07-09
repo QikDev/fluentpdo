@@ -259,7 +259,7 @@ abstract class BaseQuery implements IteratorAggregate
         $matches = [];
         echo '<pre>';
         print_r($query);
-        preg_match('/{\?}/', $query, $matches);
+        preg_match('/\?/', $query, $matches);
         print_r($matches);
 
         $query = preg_replace('/\?/', $params, $query);
