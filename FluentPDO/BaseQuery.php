@@ -256,7 +256,9 @@ abstract class BaseQuery implements IteratorAggregate
         if ($formatted)
             $query = FluentUtils::formatQuery($query);
 
+        echo 'query';
         Utility::Dump($query);
+        echo 'params';
         Utility::Dump($params);
 
         exit;
