@@ -249,6 +249,7 @@ abstract class BaseQuery implements IteratorAggregate
      *
      * @return string
      */
+    //https://stackoverflow.com/questions/210564/getting-raw-sql-query-string-from-pdo-prepared-statements
     public function GetBuiltQuery($formatted = true) {
         $query = $this->buildQuery();
         $params = $this->buildParameters();
@@ -264,15 +265,8 @@ abstract class BaseQuery implements IteratorAggregate
             else
                 $keys[] = '/[?]/';
         }
-        
-        $matches = [];
-        echo '<pre>';
-        print_r($query);
-        echo "\n";
-        preg_match('/[?]/', $query, $matches);
-        print_r($matches);
 
-        $query = preg_replace('/(\?)/', $params, $query);
+        $query = preg_replace($keys, $params, $query, 1, $count);
         echo 'query';
         print_r($query);
         echo '<br />params';
