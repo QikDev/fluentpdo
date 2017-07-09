@@ -256,11 +256,20 @@ abstract class BaseQuery implements IteratorAggregate
         if ($formatted)
             $query = FluentUtils::formatQuery($query);
 
+        $keys = [];
+        foreach ($params as $key)
+        {
+            if (is_string($key))
+                $keys[] = '/:'.$key.'/';
+            else
+                $keys[] = '/[?]/';
+        }
+        
         $matches = [];
         echo '<pre>';
         print_r($query);
         echo "\n";
-        preg_match('/\?/', $query, $matches);
+        preg_match('/[?]/', $query, $matches);
         print_r($matches);
 
         $query = preg_replace('/(\?)/', $params, $query);
