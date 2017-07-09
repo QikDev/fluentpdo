@@ -235,9 +235,31 @@ abstract class BaseQuery implements IteratorAggregate
      */
     public function getQuery($formatted = true) {
         $query = $this->buildQuery();
-        if ($formatted) {
+
+        if ($formatted)
             $query = FluentUtils::formatQuery($query);
-        }
+
+        return $query;
+    }
+
+    /**
+     * Get built query string
+     *
+     * @param bool $formatted - Return formatted query
+     *
+     * @return string
+     */
+    public function GetBuiltQuery($formatted = true) {
+        $query = $this->buildQuery();
+        $params = $this->buildParameters();
+
+        if ($formatted)
+            $query = FluentUtils::formatQuery($query);
+
+        Utility::Dump($query);
+        Utility::Dump($params);
+
+        exit;
 
         return $query;
     }
