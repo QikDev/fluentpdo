@@ -137,10 +137,6 @@ abstract class BaseQuery implements IteratorAggregate
 
         $time = microtime(true);
         if ($result && $result->execute($parameters)) {
-            echo 'dumping PDO';
-            var_dump($result);
-            var_dump($result->debugDumpParams());
-            exit;
             $this->time = microtime(true) - $time;
             $this->result = $result;
         } else {
@@ -260,6 +256,7 @@ abstract class BaseQuery implements IteratorAggregate
         if ($formatted)
             $query = FluentUtils::formatQuery($query);
 
+        $query = preg_replace('/\?/', $params);
         echo '<pre>query';
         print_r($query);
         echo '<br />params';
