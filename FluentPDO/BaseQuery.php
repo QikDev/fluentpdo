@@ -265,17 +265,8 @@ abstract class BaseQuery implements IteratorAggregate
             else
                 $keys[] = '/[?]/';
         }
-
-        $query = preg_replace($keys, $params, $query, 1, $count);
-        echo 'query';
-        print_r($query);
-        echo '<br />params';
-        print_r($params);
-        echo '</pre>';
-
-        exit;
-
-        return $query;
+        
+        return preg_replace($keys, $params, $query, 1, $count);
     }
 
     /**
