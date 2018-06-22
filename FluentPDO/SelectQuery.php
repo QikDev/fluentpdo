@@ -180,7 +180,7 @@ class SelectQuery extends CommonQuery implements Countable
     public function count() {
         $fpdo = clone $this;
 
-        return (int)$fpdo->select(null)->select('COUNT(*)')->fetchColumn();
+        return (int)$fpdo->select(null)->orderBy(null)->select('COUNT(*)')->fetchColumn();
     }
 
     public function getIterator() {
