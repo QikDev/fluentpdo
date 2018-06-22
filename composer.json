@@ -1,13 +1,13 @@
 {
-	"name": "mistevs/fluentpdo",
+	"name": "qikdev/fluentpdo",
 	"description": "FluentPDO is small PHP library for rapid query building. Killer feature is smart join builder which generates joins automatically.",
 	"keywords": ["database", "dbal", "pdo"],
-	"homepage": "https://github.com/mistevs/fluentpdo",
+	"homepage": "https://github.com/qikdev/fluentpdo",
 	"license": ["Apache-2.0", "GPL-2.0+"],
 	"authors": [
 		{
 			"name": "Mike Sevens",
-			"homepage": "https://mistevs.io/"
+			"homepage": "https://qikdev.io/"
 		}
 	],
 	"autoload": {
