@@ -23,7 +23,7 @@ class SelectQuery extends CommonQuery implements Countable
     private $fromAlias;
 
     /** @var boolean */
-    private $convertTypes = false;
+    private $convertTypes = true;
 
     /**
      * SelectQuery constructor.
