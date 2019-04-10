@@ -50,7 +50,7 @@ class FluentUtils
     {
         for ($i = 0; $columnMeta = $statement->getColumnMeta($i); $i++)
         {
-            $type = $columnMeta['native_type'];
+            $type = $columnMeta['native_type'] ?? null;
     
             switch($type)
             {
